@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="HTq-cK-Qdy">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Movies View Controller-->
+        <scene sceneID="jU7-eL-sI2">
+            <objects>
+                <viewController id="G22-GE-UnF" customClass="MoviesViewController" customModule="codeChallengeRappi" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bIw-2d-ZWC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="dca-18-c0r">
+                                <rect key="frame" x="72.5" y="74" width="230" height="29"/>
+                                <segments>
+                                    <segment title="Popular"/>
+                                    <segment title="Top Rated"/>
+                                    <segment title="Upcoming"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentedChanged:" destination="G22-GE-UnF" eventType="valueChanged" id="2AX-8l-lSi"/>
+                                </connections>
+                            </segmentedControl>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lVG-9h-iAB">
+                                <rect key="frame" x="0.0" y="117" width="375" height="550"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Hfq-A1-E1N">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                                <connections>
+                                    <outlet property="dataSource" destination="G22-GE-UnF" id="GA3-5P-n8a"/>
+                                    <outlet property="delegate" destination="G22-GE-UnF" id="BDO-y9-FVw"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="lVG-9h-iAB" firstAttribute="leading" secondItem="dCP-Zk-dEa" secondAttribute="leading" id="36q-T8-JP3"/>
+                            <constraint firstItem="lVG-9h-iAB" firstAttribute="top" secondItem="dca-18-c0r" secondAttribute="bottom" constant="15" id="A84-nN-8is"/>
+                            <constraint firstItem="dCP-Zk-dEa" firstAttribute="trailing" secondItem="lVG-9h-iAB" secondAttribute="trailing" id="JFL-kn-VEV"/>
+                            <constraint firstItem="dca-18-c0r" firstAttribute="top" secondItem="dCP-Zk-dEa" secondAttribute="top" constant="10" id="cIf-3e-xte"/>
+                            <constraint firstItem="dca-18-c0r" firstAttribute="centerX" secondItem="dCP-Zk-dEa" secondAttribute="centerX" id="gfO-cF-Ijw"/>
+                            <constraint firstItem="dCP-Zk-dEa" firstAttribute="bottom" secondItem="lVG-9h-iAB" secondAttribute="bottom" id="pkg-5c-sbl"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="dCP-Zk-dEa"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="DEN-PL-J5a"/>
+                    <connections>
+                        <outlet property="collectionView" destination="lVG-9h-iAB" id="VIP-ng-H5N"/>
+                        <outlet property="searchDisplayController" destination="M3N-fU-ggZ" id="glx-zR-HBB"/>
+                        <outlet property="segmentedControl" destination="dca-18-c0r" id="Oul-6e-mK8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L10-wh-lCW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="M3N-fU-ggZ">
+                    <connections>
+                        <outlet property="delegate" destination="G22-GE-UnF" id="BVf-rY-Uwy"/>
+                        <outlet property="searchContentsController" destination="G22-GE-UnF" id="RWR-jg-Ojl"/>
+                        <outlet property="searchResultsDataSource" destination="G22-GE-UnF" id="r6H-yI-w3m"/>
+                        <outlet property="searchResultsDelegate" destination="G22-GE-UnF" id="2Vb-H0-G5o"/>
+                    </connections>
+                </searchDisplayController>
+            </objects>
+            <point key="canvasLocation" x="1071.2" y="241.52923538230885"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="MxR-O7-rPw">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="HTq-cK-Qdy" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="QA2-9J-yQA">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="G22-GE-UnF" kind="relationship" relationship="rootViewController" id="v8r-Qb-qWD"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="054-DO-aIe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="132" y="241.52923538230885"/>
+        </scene>
+    </scenes>
+</document>

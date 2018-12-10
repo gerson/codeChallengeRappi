@@ -51,5 +51,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>TMDbAPIURL</key>
+	<string>https://api.themoviedb.org</string>
+	<key>TMDbAPIKey</key>
+	<string>3eb7f8cfda3a825d130cd5f8a5cdefa3</string>
 </dict>
 </plist>

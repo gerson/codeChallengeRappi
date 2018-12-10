@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,7 +17,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        //Realm database path
+        var config = Realm.Configuration()
+        print(config.fileURL!)
+        
+        //Setting adapter to alamofire session
+        let sessionManager = Alamofire.SessionManager.default
+        sessionManager.adapter = APIServiceAdapter()
+        
         return true
     }
 
