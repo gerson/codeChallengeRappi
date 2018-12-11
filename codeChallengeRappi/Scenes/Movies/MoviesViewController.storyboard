@@ -18,17 +18,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="dca-18-c0r">
-                                <rect key="frame" x="72.5" y="30" width="230" height="29"/>
-                                <segments>
-                                    <segment title="Popular"/>
-                                    <segment title="Top Rated"/>
-                                    <segment title="Upcoming"/>
-                                </segments>
-                                <connections>
-                                    <action selector="segmentedChanged:" destination="G22-GE-UnF" eventType="valueChanged" id="2AX-8l-lSi"/>
-                                </connections>
-                            </segmentedControl>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lVG-9h-iAB">
                                 <rect key="frame" x="0.0" y="73" width="375" height="594"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -44,6 +33,17 @@
                                     <outlet property="delegate" destination="G22-GE-UnF" id="BDO-y9-FVw"/>
                                 </connections>
                             </collectionView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="dca-18-c0r">
+                                <rect key="frame" x="72.5" y="30" width="230" height="29"/>
+                                <segments>
+                                    <segment title="Popular"/>
+                                    <segment title="Top Rated"/>
+                                    <segment title="Upcoming"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentedChanged:" destination="G22-GE-UnF" eventType="valueChanged" id="2AX-8l-lSi"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>

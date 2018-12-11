@@ -18,27 +18,27 @@ enum Categories: String {
 }
 
 protocol MoviesWorkerProtocol {
-    func fetchByCategoy(category: Categories, completion: @escaping ([Movie]) -> Void, failure: @escaping (Error) -> Void)
+    func fetchByCategoy(category: Categories, page: Int, completion: @escaping ([Movie]) -> Void, failure: @escaping (Error) -> Void)
 }
 
 class MoviesWorker: MoviesWorkerProtocol {
     
-    func fetchByCategoy(category: Categories, completion: @escaping ([Movie]) -> Void, failure: @escaping (Error) -> Void) {
+    func fetchByCategoy(category: Categories, page: Int, completion: @escaping ([Movie]) -> Void, failure: @escaping (Error) -> Void) {
         switch category {
         case .TopRated:
-            MovieRepository.getTopRated(completion: { (results: Results<Movie>) in
+            MovieRepository.getTopRated(page: page, completion: { (results: Results<Movie>) in
                 completion(results.toArray(type: Movie.self))
             }) { (err: Error) in
                 failure(err)
             }
         case .Upcoming:
-            MovieRepository.getUpcoming(completion: { (results: Results<Movie>) in
+            MovieRepository.getUpcoming(page: page, completion: { (results: Results<Movie>) in
                 completion(results.toArray(type: Movie.self))
             }) { (err: Error) in
                 failure(err)
             }
         default:
-            MovieRepository.getPopular(completion: { (results: Results<Movie>) in
+            MovieRepository.getPopular(page: page, completion: { (results: Results<Movie>) in
                 completion(results.toArray(type: Movie.self))
             }) { (err: Error) in
                 failure(err)

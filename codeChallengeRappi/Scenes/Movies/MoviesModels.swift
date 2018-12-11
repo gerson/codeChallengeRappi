@@ -16,6 +16,7 @@ enum Movies {
   // MARK: Use cases
     struct Request {
         var category: Categories
+        var page: Int
     }
     
     struct Response {

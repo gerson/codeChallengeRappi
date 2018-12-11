@@ -11,9 +11,10 @@ import Alamofire
 
 class SerieServices {
     
-    static func getPopular(completion: @escaping ([Serie]) -> Void, failure: @escaping (Error) -> Void) {
+    static func getPopular(page: Int, completion: @escaping ([Serie]) -> Void, failure: @escaping (Error) -> Void) {
         let sessionManager = Alamofire.SessionManager.default
-        sessionManager.request(APIRouter.popularSeries).responseJSON { response in
+        let parameters: Parameters = ["page": page]
+        sessionManager.request(APIRouter.popularSeries(parameters: parameters)).responseJSON { response in
             if response.result.isSuccess {
                 let json = response.data
                 do {
@@ -29,9 +30,10 @@ class SerieServices {
         }
     }
     
-    static func getTopRated(completion: @escaping ([Serie]) -> Void, failure: @escaping (Error) -> Void) {
+    static func getTopRated(page: Int, completion: @escaping ([Serie]) -> Void, failure: @escaping (Error) -> Void) {
         let sessionManager = Alamofire.SessionManager.default
-        sessionManager.request(APIRouter.topRatedSeries).responseJSON { response in
+        let parameters: Parameters = ["page": page]
+        sessionManager.request(APIRouter.topRatedSeries(parameters: parameters)).responseJSON { response in
             if response.result.isSuccess {
                 let json = response.data
                 do {
@@ -47,9 +49,10 @@ class SerieServices {
         }
     }
     
-    static func getUpcoming(completion: @escaping ([Serie]) -> Void, failure: @escaping (Error) -> Void) {
+    static func getUpcoming(page: Int, completion: @escaping ([Serie]) -> Void, failure: @escaping (Error) -> Void) {
         let sessionManager = Alamofire.SessionManager.default
-        sessionManager.request(APIRouter.upcomingSeries).responseJSON { response in
+        let parameters: Parameters = ["page": page]
+        sessionManager.request(APIRouter.upcomingSeries(parameters: parameters)).responseJSON { response in
             if response.result.isSuccess {
                 let json = response.data
                 do {

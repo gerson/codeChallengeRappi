@@ -9,6 +9,7 @@ target 'codeChallengeRappi' do
   pod 'Alamofire', '~> 4'
   pod 'RealmSwift'
   pod 'Kingfisher', '~> 5.0'
+  pod 'SwiftMessages'
 
   target 'codeChallengeRappiTests' do
     inherit! :search_paths

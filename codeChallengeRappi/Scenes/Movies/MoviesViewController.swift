@@ -16,10 +16,10 @@ protocol MoviesDisplayLogic: class {
   func displayMovies(viewModel: Movies.ViewModel)
 }
 
-class MoviesViewController: UIViewController, MoviesDisplayLogic {
+class MoviesViewController: BaseViewController, MoviesDisplayLogic {
+    
   var interactor: MoviesBusinessLogic?
   var router: (NSObjectProtocol & MoviesRoutingLogic & MoviesDataPassing)?
-  let kCellIdentifier = "posterCollectionCell"
   var movies: Movies.ViewModel?
     
   // MARK: IBOutlets
@@ -74,32 +74,29 @@ class MoviesViewController: UIViewController, MoviesDisplayLogic {
     
     collectionView.register(UINib.init(nibName: "PosterCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: kCellIdentifier)
     
-    fetchPopularMovies()
+    fetchPopular()
   }
   
   @IBAction func segmentedChanged(_ sender: UISegmentedControl) {
-    switch sender.selectedSegmentIndex {
-    case 1:
-        fetchTopRatedMovies()
-    case 2:
-        fetchTopUpcomingMovies()
-    default:
-        fetchPopularMovies()
-    }
+    fetchByCategory(categoryIndex: sender.selectedSegmentIndex)
+    collectionView.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
   }
   
-  func fetchPopularMovies() {
-    let request = Movies.Request(category: Categories.Popular)
+  override func fetchPopular(page: Int = 1) {
+    super.fetchPopular()
+    let request = Movies.Request(category: Categories.Popular, page: page)
     interactor?.fetchMovies(request: request)
   }
     
-  func fetchTopRatedMovies() {
-    let request = Movies.Request(category: Categories.TopRated)
+  override func fetchTopRated(page: Int = 1) {
+    super.fetchTopRated()
+    let request = Movies.Request(category: Categories.TopRated, page: page)
     interactor?.fetchMovies(request: request)
   }
     
-  func fetchTopUpcomingMovies() {
-    let request = Movies.Request(category: Categories.Upcoming)
+  override func fetchUpcoming(page: Int = 1) {
+    let request = Movies.Request(category: Categories.Upcoming, page: page)
+    super.fetchUpcoming()
     interactor?.fetchMovies(request: request)
   }
   
@@ -128,8 +125,26 @@ extension MoviesViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kCellIdentifier, for: indexPath) as! PosterCollectionViewCell
-        cell.posterPath = movies?.displayedMovies[indexPath.row].posterPath
+        if let movies = movies?.displayedMovies {
+            cell.posterPath = movies[indexPath.row].posterPath
+            //Fetching more moviews by page
+            loadMoreMovies(indexPath: indexPath, movies: movies)
+        }
+        
         return cell
     }
     
+    private func loadMoreMovies(indexPath: IndexPath, movies: [Movies.ViewModel.DisplayedMovie]) {
+        if (indexPath.row > (movies.count - 5)){
+            let page = (movies.count/kNumberOfItemByPage) + 1
+            switch currentCategory {
+            case .TopRated:
+                fetchTopRated(page: page)
+            case .Upcoming:
+                fetchUpcoming(page: page)
+            default:
+                fetchPopular(page: page)
+            }
+        }
+    }
 }

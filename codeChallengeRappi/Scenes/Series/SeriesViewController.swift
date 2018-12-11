@@ -16,11 +16,9 @@ protocol SeriesDisplayLogic: class {
   func displaySeries(viewModel: Series.ViewModel)
 }
 
-class SeriesViewController: UIViewController, SeriesDisplayLogic {
+class SeriesViewController: BaseViewController, SeriesDisplayLogic {
   var interactor: SeriesBusinessLogic?
   var router: (NSObjectProtocol & SeriesRoutingLogic & SeriesDataPassing)?
-
-  let kCellIdentifier = "posterCollectionCell"
   var series: Series.ViewModel?
     
   // MARK: IBOutlets
@@ -74,32 +72,29 @@ class SeriesViewController: UIViewController, SeriesDisplayLogic {
     
     collectionView.register(UINib.init(nibName: "PosterCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: kCellIdentifier)
     
-    fetchPopularSeries()
+    fetchPopular()
   }
   
   @IBAction func segmentedChanged(_ sender: UISegmentedControl) {
-    switch sender.selectedSegmentIndex {
-    case 1:
-        fetchTopRatedSeries()
-    case 2:
-        fetchTopUpcomingSeries()
-    default:
-        fetchPopularSeries()
-    }
+    fetchByCategory(categoryIndex: sender.selectedSegmentIndex)
+    collectionView.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
   }
     
-  func fetchPopularSeries() {
-    let request = Series.Request(category: Categories.Popular)
+  override func fetchPopular(page: Int = 1) {
+    super.fetchPopular()
+    let request = Series.Request(category: Categories.Popular, page: page)
     interactor?.fetchSeries(request: request)
   }
 
-  func fetchTopRatedSeries() {
-    let request = Series.Request(category: Categories.TopRated)
+  override func fetchTopRated(page: Int = 1) {
+    super.fetchTopRated()
+    let request = Series.Request(category: Categories.TopRated, page: page)
     interactor?.fetchSeries(request: request)
   }
 
-  func fetchTopUpcomingSeries() {
-    let request = Series.Request(category: Categories.Upcoming)
+  override func fetchUpcoming(page: Int = 1) {
+    super.fetchUpcoming()
+    let request = Series.Request(category: Categories.Upcoming, page: page)
     interactor?.fetchSeries(request: request)
   }
   
@@ -127,8 +122,26 @@ extension SeriesViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kCellIdentifier, for: indexPath) as! PosterCollectionViewCell
-        cell.posterPath = series?.displayedSeries[indexPath.row].posterPath
+        if let series = series?.displayedSeries {
+            cell.posterPath = series[indexPath.row].posterPath
+            //Fetching more moviews by page
+            loadMoreMovies(indexPath: indexPath, series: series)
+        }
         return cell
+    }
+    
+    private func loadMoreMovies(indexPath: IndexPath, series: [Series.ViewModel.DisplayedSerie]) {
+        if (indexPath.row > (series.count - 5)){
+            let page = (series.count/kNumberOfItemByPage) + 1
+            switch currentCategory {
+            case .TopRated:
+                fetchTopRated(page: page)
+            case .Upcoming:
+                fetchUpcoming(page: page)
+            default:
+                fetchPopular(page: page)
+            }
+        }
     }
     
 }

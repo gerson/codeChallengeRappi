@@ -14,27 +14,27 @@ import UIKit
 import RealmSwift
 
 protocol SeriesWorkerProtocol {
-    func fetchByCategoy(category: Categories, completion: @escaping ([Serie]) -> Void, failure: @escaping (Error) -> Void)
+    func fetchByCategoy(page: Int, category: Categories, completion: @escaping ([Serie]) -> Void, failure: @escaping (Error) -> Void)
 }
 
 class SeriesWorker: SeriesWorkerProtocol {
     
-    func fetchByCategoy(category: Categories, completion: @escaping ([Serie]) -> Void, failure: @escaping (Error) -> Void) {
+    func fetchByCategoy(page: Int, category: Categories, completion: @escaping ([Serie]) -> Void, failure: @escaping (Error) -> Void) {
         switch category {
         case .TopRated:
-            SerieRepository.getTopRated(completion: { (results: Results<Serie>) in
+            SerieRepository.getTopRated(page: page, completion: { (results: Results<Serie>) in
                 completion(results.toArray(type: Serie.self))
             }) { (err: Error) in
                 failure(err)
             }
         case .Upcoming:
-            SerieRepository.getUpcoming(completion: { (results: Results<Serie>) in
+            SerieRepository.getUpcoming(page: page, completion: { (results: Results<Serie>) in
                 completion(results.toArray(type: Serie.self))
             }) { (err: Error) in
                 failure(err)
             }
         default:
-            SerieRepository.getPopular(completion: { (results: Results<Serie>) in
+            SerieRepository.getPopular(page: page, completion: { (results: Results<Serie>) in
                 completion(results.toArray(type: Serie.self))
             }) { (err: Error) in
                 failure(err)

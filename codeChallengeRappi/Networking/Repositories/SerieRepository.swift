@@ -11,9 +11,9 @@ import RealmSwift
 
 class SerieRepository {
     
-    static func getPopular(completion: @escaping (Results<Serie>) -> Void, failure: @escaping (Error) -> Void) {
+    static func getPopular(page: Int, completion: @escaping (Results<Serie>) -> Void, failure: @escaping (Error) -> Void) {
         let realm = try! Realm()
-        SerieServices.getPopular(completion: { (seriess: [Serie]) in
+        SerieServices.getPopular(page: page, completion: { (seriess: [Serie]) in
             for serie in seriess {
                 serie.popular = true
                 try! realm.write {
@@ -28,9 +28,9 @@ class SerieRepository {
         }
     }
     
-    static func getTopRated(completion: @escaping (Results<Serie>) -> Void, failure: @escaping (Error) -> Void) {
+    static func getTopRated(page: Int, completion: @escaping (Results<Serie>) -> Void, failure: @escaping (Error) -> Void) {
         let realm = try! Realm()
-        SerieServices.getTopRated(completion: { (seriess: [Serie]) in
+        SerieServices.getTopRated(page: page, completion: { (seriess: [Serie]) in
             for serie in seriess {
                 serie.topRated = true
                 try! realm.write {
@@ -45,9 +45,9 @@ class SerieRepository {
         }
     }
     
-    static func getUpcoming(completion: @escaping (Results<Serie>) -> Void, failure: @escaping (Error) -> Void) {
+    static func getUpcoming(page: Int, completion: @escaping (Results<Serie>) -> Void, failure: @escaping (Error) -> Void) {
         let realm = try! Realm()
-        SerieServices.getUpcoming(completion: { (seriess: [Serie]) in
+        SerieServices.getUpcoming(page: page, completion: { (seriess: [Serie]) in
             for serie in seriess {
                 serie.upcoming = true
                 try! realm.write {

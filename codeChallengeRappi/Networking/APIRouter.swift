@@ -13,12 +13,12 @@ enum APIRouter: URLRequestConvertible {
     
     static let APIServerURL = Bundle.main.infoDictionary!["TMDbAPIURL"] as! String
     
-    case popularMovies
-    case topRatedMovies
-    case upcomingMovies
-    case popularSeries
-    case topRatedSeries
-    case upcomingSeries
+    case popularMovies(parameters: Parameters)
+    case topRatedMovies(parameters: Parameters)
+    case upcomingMovies(parameters: Parameters)
+    case popularSeries(parameters: Parameters)
+    case topRatedSeries(parameters: Parameters)
+    case upcomingSeries(parameters: Parameters)
     
     // MARK: - HTTPMethod
     private var method: HTTPMethod {
@@ -51,6 +51,12 @@ enum APIRouter: URLRequestConvertible {
     func asURLRequest() throws -> URLRequest {
         let url = try APIRouter.APIServerURL.asURL()
         var urlRequest = URLRequest(url: url.appendingPathComponent(path))
+        
+        switch self {
+            case .popularMovies(let parameters), .topRatedMovies(let parameters), .upcomingMovies(let parameters),
+                 .popularSeries(let parameters), .topRatedSeries(let parameters), .upcomingSeries(let parameters):
+            urlRequest = try URLEncoding.default.encode(urlRequest, with: parameters)
+        }
         
         // HTTP Method
         urlRequest.httpMethod = method.rawValue

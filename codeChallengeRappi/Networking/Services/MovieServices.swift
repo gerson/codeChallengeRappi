@@ -10,10 +10,11 @@ import Foundation
 import Alamofire
 
 class MovieServices {
-    
-    static func getPopular(completion: @escaping ([Movie]) -> Void, failure: @escaping (Error) -> Void) {
+
+    static func getPopular(page: Int, completion: @escaping ([Movie]) -> Void, failure: @escaping (Error) -> Void) {
         let sessionManager = Alamofire.SessionManager.default
-        sessionManager.request(APIRouter.popularMovies).responseJSON { response in
+        let parameters: Parameters = ["page": page]
+        sessionManager.request(APIRouter.popularMovies(parameters: parameters)).responseJSON { response in
             if response.result.isSuccess {
                 let json = response.data
                 do {
@@ -30,9 +31,10 @@ class MovieServices {
         }
     }
     
-    static func getTopRated(completion: @escaping ([Movie]) -> Void, failure: @escaping (Error) -> Void) {
+    static func getTopRated(page: Int, completion: @escaping ([Movie]) -> Void, failure: @escaping (Error) -> Void) {
         let sessionManager = Alamofire.SessionManager.default
-        sessionManager.request(APIRouter.topRatedMovies).responseJSON { response in
+        let parameters: Parameters = ["page": page]
+        sessionManager.request(APIRouter.topRatedMovies(parameters: parameters)).responseJSON { response in
             if response.result.isSuccess {
                 let json = response.data
                 do {
@@ -49,9 +51,10 @@ class MovieServices {
         }
     }
     
-    static func getUpcoming(completion: @escaping ([Movie]) -> Void, failure: @escaping (Error) -> Void) {
+    static func getUpcoming(page: Int, completion: @escaping ([Movie]) -> Void, failure: @escaping (Error) -> Void) {
         let sessionManager = Alamofire.SessionManager.default
-        sessionManager.request(APIRouter.upcomingMovies).responseJSON { response in
+        let parameters: Parameters = ["page": page]
+        sessionManager.request(APIRouter.upcomingMovies(parameters: parameters)).responseJSON { response in
             if response.result.isSuccess {
                 let json = response.data
                 do {

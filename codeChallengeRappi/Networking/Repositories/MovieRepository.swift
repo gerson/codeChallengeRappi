@@ -11,9 +11,9 @@ import RealmSwift
 
 class MovieRepository {
     
-    static func getPopular(completion: @escaping (Results<Movie>) -> Void, failure: @escaping (Error) -> Void) {
+    static func getPopular(page: Int, completion: @escaping (Results<Movie>) -> Void, failure: @escaping (Error) -> Void) {
         let realm = try! Realm()
-        MovieServices.getPopular(completion: { (movies: [Movie]) in
+        MovieServices.getPopular(page: page, completion: { (movies: [Movie]) in
             for movie in movies {
                 movie.popular = true
                 try! realm.write {
@@ -28,9 +28,9 @@ class MovieRepository {
         }
     }
     
-    static func getTopRated(completion: @escaping (Results<Movie>) -> Void, failure: @escaping (Error) -> Void) {
+    static func getTopRated(page: Int, completion: @escaping (Results<Movie>) -> Void, failure: @escaping (Error) -> Void) {
         let realm = try! Realm()
-        MovieServices.getTopRated(completion: { (movies: [Movie]) in
+        MovieServices.getTopRated(page: page, completion: { (movies: [Movie]) in
             for movie in movies {
                 movie.topRated = true
                 try! realm.write {
@@ -45,9 +45,9 @@ class MovieRepository {
         }
     }
     
-    static func getUpcoming(completion: @escaping (Results<Movie>) -> Void, failure: @escaping (Error) -> Void) {
+    static func getUpcoming(page: Int, completion: @escaping (Results<Movie>) -> Void, failure: @escaping (Error) -> Void) {
         let realm = try! Realm()
-        MovieServices.getUpcoming(completion: { (movies: [Movie]) in
+        MovieServices.getUpcoming(page: page, completion: { (movies: [Movie]) in
             for movie in movies {
                 movie.upcoming = true
                 try! realm.write {

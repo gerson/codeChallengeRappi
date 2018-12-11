@@ -15,9 +15,9 @@ class PosterCollectionViewCell: UICollectionViewCell {
     var posterPath: String? {
         didSet {
             imageView.image = #imageLiteral(resourceName: "placeholder")
-            if let posterPath = self.posterPath  {
+            if let posterPath = self.posterPath {
                 imageView.kf.indicatorType = .activity
-                let url = URL(string: "https://image.tmdb.org/t/p/w342/\(posterPath)")
+                let url = URL(string: "https://image.tmdb.org/t/p/w185/\(posterPath)")
                 imageView.kf.setImage(with: url, placeholder: #imageLiteral(resourceName: "placeholder"))
             }
         }

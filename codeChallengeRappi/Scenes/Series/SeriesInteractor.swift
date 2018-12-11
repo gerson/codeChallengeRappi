@@ -27,7 +27,7 @@ class SeriesInteractor: SeriesBusinessLogic, SeriesDataStore {
     func fetchSeries(request: Series.Request) {
         var response = Series.Response(series: [])
         worker = SeriesWorker()
-        worker?.fetchByCategoy(category: request.category, completion: {[weak self] (results: [Serie]) in
+        worker?.fetchByCategoy(page: request.page, category: request.category, completion: {[weak self] (results: [Serie]) in
             response.series = results
             self?.presenter?.presentSeries(response: response)
             }, failure: { (err: Error) in
