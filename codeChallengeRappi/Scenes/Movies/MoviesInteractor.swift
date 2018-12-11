@@ -28,11 +28,11 @@ class MoviesInteractor: MoviesBusinessLogic, MoviesDataStore {
   func fetchMovies(request: Movies.Request) {
     var response = Movies.Response(movies: [])
     worker = MoviesWorker()
-    worker?.fetchByCategoy(category: request.category, completion: { (results: [Movie]) in
+    worker?.fetchByCategoy(category: request.category, completion: {[weak self] (results: [Movie]) in
         response.movies = results
+        self?.presenter?.presentMovies(response: response)
     }, failure: { (err: Error) in
         print(err)
     })
-    presenter?.presentMovies(response: response)
   }
 }

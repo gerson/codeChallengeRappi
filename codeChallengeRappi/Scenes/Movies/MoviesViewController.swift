@@ -19,6 +19,8 @@ protocol MoviesDisplayLogic: class {
 class MoviesViewController: UIViewController, MoviesDisplayLogic {
   var interactor: MoviesBusinessLogic?
   var router: (NSObjectProtocol & MoviesRoutingLogic & MoviesDataPassing)?
+  let kCellIdentifier = "posterCollectionCell"
+  var movies: Movies.ViewModel?
     
   // MARK: IBOutlets
   @IBOutlet weak var segmentedControl: UISegmentedControl!
@@ -67,6 +69,9 @@ class MoviesViewController: UIViewController, MoviesDisplayLogic {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    collectionView.register(UINib.init(nibName: "PosterCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: kCellIdentifier)
+    
     fetchPopularMovies()
   }
   
@@ -97,29 +102,32 @@ class MoviesViewController: UIViewController, MoviesDisplayLogic {
   }
   
   func displayMovies(viewModel: Movies.ViewModel) {
-    //nameTextField.text = viewModel.name
+    movies = viewModel
+    collectionView.reloadData()
   }
 }
 
 
-extension MoviesViewController: UICollectionViewDelegate {
+extension MoviesViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let padding: CGFloat =  50
+        let padding: CGFloat =  30
         let collectionViewSize = collectionView.frame.size.width - padding
         
-        return CGSize(width: collectionViewSize/2, height: collectionViewSize/2)
+        return CGSize(width: collectionViewSize/2, height: collectionViewSize/1.5)
     }
 }
 
 extension MoviesViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return movies?.displayedMovies.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return UICollectionViewCell()
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kCellIdentifier, for: indexPath) as! PosterCollectionViewCell
+        cell.posterPath = movies?.displayedMovies[indexPath.row].posterPath
+        return cell
     }
     
 }

@@ -25,6 +25,9 @@ enum Movies {
     struct ViewModel {
         struct DisplayedMovie {
             var title: String?
+            var posterPath: String?
+            var releaseDate: Date?
+            var overview: String?
         }
         
         var displayedMovies: [DisplayedMovie]
