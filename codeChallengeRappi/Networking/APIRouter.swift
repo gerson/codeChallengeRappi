@@ -16,12 +16,15 @@ enum APIRouter: URLRequestConvertible {
     case popularMovies
     case topRatedMovies
     case upcomingMovies
-    case shows
+    case popularSeries
+    case topRatedSeries
+    case upcomingSeries
     
     // MARK: - HTTPMethod
     private var method: HTTPMethod {
         switch self {
-        case .popularMovies, .topRatedMovies, .upcomingMovies, .shows:
+        case .popularMovies, .topRatedMovies, .upcomingMovies,
+             .popularSeries, .topRatedSeries, .upcomingSeries:
             return .get
         }
     }
@@ -35,8 +38,12 @@ enum APIRouter: URLRequestConvertible {
             return "/3/movie/top_rated"
         case .upcomingMovies:
             return "/3/movie/upcoming"
-        case .shows:
-            return "/posts"
+        case .popularSeries:
+            return "/3/tv/popular"
+        case .topRatedSeries:
+            return "/3/tv/top_rated"
+        case .upcomingSeries:
+            return "/3/tv/on_the_air"
         }
     }
     

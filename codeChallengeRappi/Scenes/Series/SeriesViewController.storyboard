@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mxx-HL-oCD">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Series-->
+        <scene sceneID="e3g-bJ-oHi">
+            <objects>
+                <viewController id="mxx-HL-oCD" customClass="SeriesViewController" customModule="codeChallengeRappi" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TJH-Kd-hcD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="fD6-KG-YpZ">
+                                <rect key="frame" x="72.5" y="30" width="230" height="29"/>
+                                <segments>
+                                    <segment title="Popular"/>
+                                    <segment title="Top Rated"/>
+                                    <segment title="Upcoming"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentedChanged:" destination="mxx-HL-oCD" eventType="valueChanged" id="Rj1-B0-hM9"/>
+                                </connections>
+                            </segmentedControl>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="aoW-B2-yE5">
+                                <rect key="frame" x="0.0" y="73" width="375" height="594"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="mff-Wl-XLK">
+                                    <size key="itemSize" width="70" height="120"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                                <connections>
+                                    <outlet property="dataSource" destination="mxx-HL-oCD" id="HMx-9f-UuJ"/>
+                                    <outlet property="delegate" destination="mxx-HL-oCD" id="Vwv-8w-EmF"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="aoW-B2-yE5" firstAttribute="leading" secondItem="CiO-sJ-Ird" secondAttribute="leading" id="6CR-BB-Yxj"/>
+                            <constraint firstItem="fD6-KG-YpZ" firstAttribute="centerX" secondItem="CiO-sJ-Ird" secondAttribute="centerX" id="ARU-Bx-3GU"/>
+                            <constraint firstItem="CiO-sJ-Ird" firstAttribute="bottom" secondItem="aoW-B2-yE5" secondAttribute="bottom" id="OwR-0G-Pyj"/>
+                            <constraint firstItem="fD6-KG-YpZ" firstAttribute="top" secondItem="CiO-sJ-Ird" secondAttribute="top" constant="10" id="Q7q-yn-rOe"/>
+                            <constraint firstItem="CiO-sJ-Ird" firstAttribute="trailing" secondItem="aoW-B2-yE5" secondAttribute="trailing" id="etk-9q-oaP"/>
+                            <constraint firstItem="aoW-B2-yE5" firstAttribute="top" secondItem="fD6-KG-YpZ" secondAttribute="bottom" constant="15" id="qNc-c7-Wu3"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="CiO-sJ-Ird"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Series" id="qHe-Ni-rFj"/>
+                    <connections>
+                        <outlet property="collectionView" destination="aoW-B2-yE5" id="6eD-pg-w80"/>
+                        <outlet property="segmentedControl" destination="fD6-KG-YpZ" id="Ncx-mB-7BX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zLO-gP-1FU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="k2Q-cc-7ix"/>
+            </objects>
+            <point key="canvasLocation" x="2010.4000000000001" y="241.52923538230885"/>
+        </scene>
+    </scenes>
+</document>
