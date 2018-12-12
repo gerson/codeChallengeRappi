@@ -21,6 +21,7 @@
                     <connections>
                         <segue destination="bXb-Wt-4wK" kind="relationship" relationship="viewControllers" id="7zL-PV-IKd"/>
                         <segue destination="qLr-Bv-oja" kind="relationship" relationship="viewControllers" id="vWO-Zz-3OE"/>
+                        <segue destination="CGg-20-4lI" kind="relationship" relationship="viewControllers" id="epi-2f-i1f"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -42,7 +43,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vaz-iy-f22" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-518" y="718"/>
+            <point key="canvasLocation" x="-814" y="734"/>
         </scene>
         <!--MoviesViewController-->
         <scene sceneID="QQk-rx-8aG">
@@ -52,7 +53,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nMq-HC-IP5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-519" y="1158"/>
+            <point key="canvasLocation" x="-815" y="1177"/>
         </scene>
         <!--Item-->
         <scene sceneID="6rd-g8-k00">
@@ -69,7 +70,24 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ux6-OE-on0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="535" y="717"/>
+            <point key="canvasLocation" x="-1" y="798"/>
+        </scene>
+        <!--Search-->
+        <scene sceneID="gzy-BF-Th5">
+            <objects>
+                <navigationController id="CGg-20-4lI" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Search" image="search" id="oKl-PI-4oz"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="opQ-zg-gRZ">
+                        <rect key="frame" x="0.0" y="20" width="375" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="foB-2C-sd7" kind="relationship" relationship="rootViewController" id="2he-bc-7fI"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FHo-Lo-E53" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="962" y="734"/>
         </scene>
         <!--SeriesViewController-->
         <scene sceneID="cMg-dG-z3O">
@@ -79,11 +97,22 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bAi-yz-v4F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="534" y="1177"/>
+            <point key="canvasLocation" x="-3" y="1241"/>
+        </scene>
+        <!--SearchViewController-->
+        <scene sceneID="04B-h2-XqU">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SearchViewController" id="foB-2C-sd7" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="yLD-tI-K81"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fn4-Ci-Xov" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="962" y="1176"/>
         </scene>
     </scenes>
     <resources>
         <image name="Movie" width="30" height="30"/>
         <image name="monitor" width="30" height="30"/>
+        <image name="search" width="30" height="30"/>
     </resources>
 </document>
