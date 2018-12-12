@@ -26,9 +26,9 @@ class MoviesPresenter: MoviesPresentationLogic {
     for movie in response.movies {
         var movieModel = Movies.ViewModel.DisplayedMovie()
         movieModel.title = movie.title
-        //movieModel.overview = movie.overview
+        movieModel.overview = movie.overview
         movieModel.posterPath = movie.posterPath
-        //movieModel.releaseDate = movie.releaseDate
+        movieModel.identifier = movie.movieId
         movieModels.append(movieModel)
     }
     let viewModel = Movies.ViewModel(displayedMovies: movieModels)

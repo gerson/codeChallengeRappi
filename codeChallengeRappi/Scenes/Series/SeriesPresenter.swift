@@ -28,6 +28,7 @@ class SeriesPresenter: SeriesPresentationLogic {
             serieModel.title = serie.name
             serieModel.overview = serie.overview
             serieModel.posterPath = serie.posterPath
+            serieModel.identifier = serie.serieId
             serieModels.append(serieModel)
         }
         let viewModel = Series.ViewModel(displayedSeries: serieModels)

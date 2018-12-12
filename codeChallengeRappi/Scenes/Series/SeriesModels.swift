@@ -29,6 +29,7 @@ enum Series {
             var posterPath: String?
             var releaseDate: Date?
             var overview: String?
+            var identifier: Int?
         }
         
         var displayedSeries: [DisplayedSerie]

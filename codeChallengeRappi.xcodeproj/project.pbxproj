@@ -45,6 +45,12 @@
 		D4C1E99421C05B4C008FB5F9 /* Connectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C1E99321C05B4C008FB5F9 /* Connectivity.swift */; };
 		D4C1E99621C05BA2008FB5F9 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C1E99521C05BA2008FB5F9 /* BaseViewController.swift */; };
 		D4C1E99B21C08BDA008FB5F9 /* RealmWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C1E99A21C08BDA008FB5F9 /* RealmWorker.swift */; };
+		D4C1E9A721C0978E008FB5F9 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C1E9A121C0978E008FB5F9 /* DetailsViewController.swift */; };
+		D4C1E9AA21C0979D008FB5F9 /* DetailsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4C1E9A921C0979D008FB5F9 /* DetailsViewController.storyboard */; };
+		D4C1E9AD21C0B20E008FB5F9 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C1E9AC21C0B20E008FB5F9 /* VideoViewController.swift */; };
+		D4C1E9AF21C0B21A008FB5F9 /* VideoViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4C1E9AE21C0B21A008FB5F9 /* VideoViewController.storyboard */; };
+		D4C1E9B121C0B5D7008FB5F9 /* VideoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C1E9B021C0B5D7008FB5F9 /* VideoService.swift */; };
+		D4C1E9B321C0B63D008FB5F9 /* VideoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C1E9B221C0B63D008FB5F9 /* VideoResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +110,12 @@
 		D4C1E99321C05B4C008FB5F9 /* Connectivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connectivity.swift; sourceTree = "<group>"; };
 		D4C1E99521C05BA2008FB5F9 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		D4C1E99A21C08BDA008FB5F9 /* RealmWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmWorker.swift; sourceTree = "<group>"; };
+		D4C1E9A121C0978E008FB5F9 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		D4C1E9A921C0979D008FB5F9 /* DetailsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailsViewController.storyboard; sourceTree = "<group>"; };
+		D4C1E9AC21C0B20E008FB5F9 /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
+		D4C1E9AE21C0B21A008FB5F9 /* VideoViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = VideoViewController.storyboard; sourceTree = "<group>"; };
+		D4C1E9B021C0B5D7008FB5F9 /* VideoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoService.swift; sourceTree = "<group>"; };
+		D4C1E9B221C0B63D008FB5F9 /* VideoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -227,6 +239,7 @@
 		D4C1E93921BD8931008FB5F9 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				D4C1E99C21C0976F008FB5F9 /* Details */,
 				D4C1E97B21C01E95008FB5F9 /* Series */,
 				D4C1E96121BDFC80008FB5F9 /* Movies */,
 				D4C1E99521C05BA2008FB5F9 /* BaseViewController.swift */,
@@ -239,6 +252,7 @@
 			children = (
 				D4C1E94221BDAA28008FB5F9 /* MovieServices.swift */,
 				D4C1E98E21C0261B008FB5F9 /* SerieServices.swift */,
+				D4C1E9B021C0B5D7008FB5F9 /* VideoService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -248,6 +262,7 @@
 			children = (
 				D4C1E94C21BDE35B008FB5F9 /* MovieResponse.swift */,
 				D4C1E99021C02648008FB5F9 /* SerieResponse.swift */,
+				D4C1E9B221C0B63D008FB5F9 /* VideoResponse.swift */,
 			);
 			path = DTOs;
 			sourceTree = "<group>";
@@ -296,6 +311,25 @@
 				D4C1E98821C01F15008FB5F9 /* SeriesViewController.storyboard */,
 			);
 			path = Series;
+			sourceTree = "<group>";
+		};
+		D4C1E99C21C0976F008FB5F9 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				D4C1E9AB21C0B1F2008FB5F9 /* VideoVC */,
+				D4C1E9A121C0978E008FB5F9 /* DetailsViewController.swift */,
+				D4C1E9A921C0979D008FB5F9 /* DetailsViewController.storyboard */,
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
+		D4C1E9AB21C0B1F2008FB5F9 /* VideoVC */ = {
+			isa = PBXGroup;
+			children = (
+				D4C1E9AC21C0B20E008FB5F9 /* VideoViewController.swift */,
+				D4C1E9AE21C0B21A008FB5F9 /* VideoViewController.storyboard */,
+			);
+			path = VideoVC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -385,9 +419,11 @@
 				D4C1E97121BE1592008FB5F9 /* MoviesViewController.storyboard in Resources */,
 				D4C1E92121BD46D9008FB5F9 /* LaunchScreen.storyboard in Resources */,
 				D4C1E97A21BFFCEA008FB5F9 /* PosterCollectionViewCell.xib in Resources */,
+				D4C1E9AF21C0B21A008FB5F9 /* VideoViewController.storyboard in Resources */,
 				D4C1E91E21BD46D9008FB5F9 /* Assets.xcassets in Resources */,
 				D4C1E98921C01F15008FB5F9 /* SeriesViewController.storyboard in Resources */,
 				D4C1E91C21BD46D8008FB5F9 /* Main.storyboard in Resources */,
+				D4C1E9AA21C0979D008FB5F9 /* DetailsViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -456,6 +492,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-codeChallengeRappi/Pods-codeChallengeRappi-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftMessages/SwiftMessages.framework",
@@ -466,6 +503,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftMessages.framework",
@@ -489,8 +527,10 @@
 				D4C1E98F21C0261B008FB5F9 /* SerieServices.swift in Sources */,
 				D4C1E99621C05BA2008FB5F9 /* BaseViewController.swift in Sources */,
 				D4C1E98B21C0222C008FB5F9 /* Serie.swift in Sources */,
+				D4C1E9AD21C0B20E008FB5F9 /* VideoViewController.swift in Sources */,
 				D4C1E96D21BDFC98008FB5F9 /* MoviesInteractor.swift in Sources */,
 				D4C1E96F21BE0ECE008FB5F9 /* ResultsExtension.swift in Sources */,
+				D4C1E9A721C0978E008FB5F9 /* DetailsViewController.swift in Sources */,
 				D4C1E99421C05B4C008FB5F9 /* Connectivity.swift in Sources */,
 				D4C1E98721C01EAA008FB5F9 /* SeriesInteractor.swift in Sources */,
 				D4C1E94F21BDEB90008FB5F9 /* DateExtension.swift in Sources */,
@@ -499,8 +539,10 @@
 				D4C1E96A21BDFC98008FB5F9 /* MoviesRouter.swift in Sources */,
 				D4C1E98621C01EAA008FB5F9 /* SeriesViewController.swift in Sources */,
 				D4C1E94321BDAA28008FB5F9 /* MovieServices.swift in Sources */,
+				D4C1E9B321C0B63D008FB5F9 /* VideoResponse.swift in Sources */,
 				D4C1E96921BDFC98008FB5F9 /* MoviesWorker.swift in Sources */,
 				D4C1E98421C01EAA008FB5F9 /* SeriesRouter.swift in Sources */,
+				D4C1E9B121C0B5D7008FB5F9 /* VideoService.swift in Sources */,
 				D4C1E99121C02648008FB5F9 /* SerieResponse.swift in Sources */,
 				D4C1E96C21BDFC98008FB5F9 /* MoviesViewController.swift in Sources */,
 				D4C1E96B21BDFC98008FB5F9 /* MoviesModels.swift in Sources */,

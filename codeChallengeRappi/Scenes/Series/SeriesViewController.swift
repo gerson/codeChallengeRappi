@@ -18,7 +18,7 @@ protocol SeriesDisplayLogic: class {
 
 class SeriesViewController: BaseViewController, SeriesDisplayLogic {
   var interactor: SeriesBusinessLogic?
-  var router: (NSObjectProtocol & SeriesRoutingLogic & SeriesDataPassing)?
+  var router: SeriesRouter?
   var series: Series.ViewModel?
     
   // MARK: IBOutlets
@@ -49,18 +49,6 @@ class SeriesViewController: BaseViewController, SeriesDisplayLogic {
     interactor.presenter = presenter
     presenter.viewController = viewController
     router.viewController = viewController
-    router.dataStore = interactor
-  }
-  
-  // MARK: Routing
-  
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if let scene = segue.identifier {
-      let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
-      if let router = router, router.responds(to: selector) {
-        router.perform(selector, with: segue)
-      }
-    }
   }
   
   // MARK: View lifecycle
@@ -102,6 +90,17 @@ class SeriesViewController: BaseViewController, SeriesDisplayLogic {
     series = viewModel
     collectionView.reloadData()
   }
+}
+
+extension SeriesViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let series = series?.displayedSeries {
+            let serie = series[indexPath.row]
+            let detailModel = DetailModel(posterPath: serie.posterPath, title: serie.title, overview: serie.overview, identifier: serie.identifier, source: .Serie)
+            router?.routeToDetail(detailModel: detailModel)
+        }
+    }
 }
 
 extension SeriesViewController: UICollectionViewDelegateFlowLayout {

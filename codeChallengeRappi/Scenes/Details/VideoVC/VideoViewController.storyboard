@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SiI-b1-mcu">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Video View Controller-->
+        <scene sceneID="0L4-yY-ydU">
+            <objects>
+                <viewController id="SiI-b1-mcu" customClass="VideoViewController" customModule="codeChallengeRappi" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9k2-5m-mEH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6YH-3Y-W5d">
+                                <rect key="frame" x="0.0" y="100" width="375" height="567"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7aJ-SK-21v">
+                                <rect key="frame" x="325" y="50" width="30" height="34"/>
+                                <connections>
+                                    <action selector="cancelButtonTapped:" destination="SiI-b1-mcu" eventType="touchUpInside" id="qca-86-atX"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="6YH-3Y-W5d" firstAttribute="leading" secondItem="f4b-yu-F8V" secondAttribute="leading" id="1vi-2p-fl3"/>
+                            <constraint firstItem="f4b-yu-F8V" firstAttribute="trailing" secondItem="7aJ-SK-21v" secondAttribute="trailing" constant="20" id="OiZ-5C-UKf"/>
+                            <constraint firstItem="f4b-yu-F8V" firstAttribute="bottom" secondItem="6YH-3Y-W5d" secondAttribute="bottom" id="PXc-sU-7vO"/>
+                            <constraint firstItem="7aJ-SK-21v" firstAttribute="top" secondItem="f4b-yu-F8V" secondAttribute="top" constant="30" id="V94-qE-UBa"/>
+                            <constraint firstItem="f4b-yu-F8V" firstAttribute="trailing" secondItem="6YH-3Y-W5d" secondAttribute="trailing" id="mUW-RD-u4m"/>
+                            <constraint firstItem="6YH-3Y-W5d" firstAttribute="top" secondItem="f4b-yu-F8V" secondAttribute="top" constant="80" id="wlS-M8-Imk"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="f4b-yu-F8V"/>
+                    </view>
+                    <connections>
+                        <outlet property="cancelButton" destination="7aJ-SK-21v" id="kXi-ST-Mct"/>
+                        <outlet property="webView" destination="6YH-3Y-W5d" id="6Gp-QE-LFG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gPt-uC-LAZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="74" y="80"/>
+        </scene>
+    </scenes>
+</document>

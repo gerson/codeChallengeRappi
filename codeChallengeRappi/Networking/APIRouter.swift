@@ -19,12 +19,15 @@ enum APIRouter: URLRequestConvertible {
     case popularSeries(parameters: Parameters)
     case topRatedSeries(parameters: Parameters)
     case upcomingSeries(parameters: Parameters)
+    case movieVideo(videoId: Int)
+    case serieVideo(serieId: Int)
     
     // MARK: - HTTPMethod
     private var method: HTTPMethod {
         switch self {
         case .popularMovies, .topRatedMovies, .upcomingMovies,
-             .popularSeries, .topRatedSeries, .upcomingSeries:
+             .popularSeries, .topRatedSeries, .upcomingSeries,
+             .movieVideo, .serieVideo:
             return .get
         }
     }
@@ -44,6 +47,10 @@ enum APIRouter: URLRequestConvertible {
             return "/3/tv/top_rated"
         case .upcomingSeries:
             return "/3/tv/on_the_air"
+        case .movieVideo(let movieId):
+            return "/3/movie/\(movieId)/videos"
+        case .serieVideo(let serieId):
+            return "/3/tv/\(serieId)/videos"
         }
     }
     
@@ -53,9 +60,11 @@ enum APIRouter: URLRequestConvertible {
         var urlRequest = URLRequest(url: url.appendingPathComponent(path))
         
         switch self {
-            case .popularMovies(let parameters), .topRatedMovies(let parameters), .upcomingMovies(let parameters),
+        case .popularMovies(let parameters), .topRatedMovies(let parameters), .upcomingMovies(let parameters),
                  .popularSeries(let parameters), .topRatedSeries(let parameters), .upcomingSeries(let parameters):
             urlRequest = try URLEncoding.default.encode(urlRequest, with: parameters)
+        case .movieVideo, .serieVideo:
+            break
         }
         
         // HTTP Method

@@ -12,46 +12,13 @@
 
 import UIKit
 
-@objc protocol SeriesRoutingLogic {
-  //func routeToSomewhere(segue: UIStoryboardSegue?)
-}
-
-protocol SeriesDataPassing {
-  var dataStore: SeriesDataStore? { get }
-}
-
-class SeriesRouter: NSObject, SeriesRoutingLogic, SeriesDataPassing {
+class SeriesRouter {
   weak var viewController: SeriesViewController?
-  var dataStore: SeriesDataStore?
   
   // MARK: Routing
-  
-  //func routeToSomewhere(segue: UIStoryboardSegue?)
-  //{
-  //  if let segue = segue {
-  //    let destinationVC = segue.destination as! SomewhereViewController
-  //    var destinationDS = destinationVC.router!.dataStore!
-  //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-  //  } else {
-  //    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-  //    let destinationVC = storyboard.instantiateViewController(withIdentifier: "SomewhereViewController") as! SomewhereViewController
-  //    var destinationDS = destinationVC.router!.dataStore!
-  //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-  //    navigateToSomewhere(source: viewController!, destination: destinationVC)
-  //  }
-  //}
-
-  // MARK: Navigation
-  
-  //func navigateToSomewhere(source: SeriesViewController, destination: SomewhereViewController)
-  //{
-  //  source.show(destination, sender: nil)
-  //}
-  
-  // MARK: Passing data
-  
-  //func passDataToSomewhere(source: SeriesDataStore, destination: inout SomewhereDataStore)
-  //{
-  //  destination.name = source.name
-  //}
+  func routeToDetail(detailModel: DetailModel) {
+    let detailVC = UIStoryboard(name: "DetailsViewController", bundle: nil).instantiateInitialViewController() as! DetailsViewController
+    detailVC.detailModel = detailModel
+    viewController?.navigationController?.pushViewController(detailVC, animated: true)
+  }
 }

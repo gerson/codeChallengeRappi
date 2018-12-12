@@ -19,7 +19,7 @@ protocol MoviesDisplayLogic: class {
 class MoviesViewController: BaseViewController, MoviesDisplayLogic {
     
   var interactor: MoviesBusinessLogic?
-  var router: (NSObjectProtocol & MoviesRoutingLogic & MoviesDataPassing)?
+  var router: MoviesRouter?
   var movies: Movies.ViewModel?
     
   // MARK: IBOutlets
@@ -51,18 +51,6 @@ class MoviesViewController: BaseViewController, MoviesDisplayLogic {
     interactor.presenter = presenter
     presenter.viewController = viewController
     router.viewController = viewController
-    router.dataStore = interactor
-  }
-  
-  // MARK: Routing
-  
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if let scene = segue.identifier {
-      let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
-      if let router = router, router.responds(to: selector) {
-        router.perform(selector, with: segue)
-      }
-    }
   }
   
   // MARK: View lifecycle
@@ -106,6 +94,16 @@ class MoviesViewController: BaseViewController, MoviesDisplayLogic {
   }
 }
 
+extension MoviesViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let movies = movies?.displayedMovies {
+            let movie = movies[indexPath.row]
+            let detailModel = DetailModel(posterPath: movie.posterPath, title: movie.title, overview: movie.overview, identifier: movie.identifier, source: .Movie)
+            router?.routeToDetail(detailModel: detailModel)
+        }
+    }
+}
 
 extension MoviesViewController: UICollectionViewDelegateFlowLayout {
     
@@ -130,7 +128,6 @@ extension MoviesViewController: UICollectionViewDataSource {
             //Fetching more moviews by page
             loadMoreMovies(indexPath: indexPath, movies: movies)
         }
-        
         return cell
     }
     

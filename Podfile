@@ -10,6 +10,7 @@ target 'codeChallengeRappi' do
   pod 'RealmSwift'
   pod 'Kingfisher', '~> 5.0'
   pod 'SwiftMessages'
+  pod 'MBProgressHUD', '~> 1.1.0'
 
   target 'codeChallengeRappiTests' do
     inherit! :search_paths
