@@ -24,6 +24,8 @@ class SerieServices {
                 } catch let error {
                     failure(error)
                 }
+            } else if let error = response.error, error._code == -1009 {
+                completion([])
             } else {
                 failure(response.result.error!)
             }
@@ -43,6 +45,8 @@ class SerieServices {
                 } catch let error {
                     failure(error)
                 }
+            } else if let error = response.error, error._code == -1009 {
+                completion([])
             } else {
                 failure(response.result.error!)
             }
@@ -62,6 +66,8 @@ class SerieServices {
                 } catch let error {
                     failure(error)
                 }
+            } else if let error = response.error, error._code == -1009 {
+                completion([])
             } else {
                 failure(response.result.error!)
             }

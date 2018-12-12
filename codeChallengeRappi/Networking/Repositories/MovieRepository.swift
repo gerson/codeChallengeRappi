@@ -12,7 +12,7 @@ import RealmSwift
 class MovieRepository {
     
     static func getPopular(page: Int, completion: @escaping (Results<Movie>) -> Void, failure: @escaping (Error) -> Void) {
-        let realm = try! Realm()
+        let realm = RealmWorker.default.realm!
         MovieServices.getPopular(page: page, completion: { (movies: [Movie]) in
             for movie in movies {
                 movie.popular = true
@@ -29,7 +29,7 @@ class MovieRepository {
     }
     
     static func getTopRated(page: Int, completion: @escaping (Results<Movie>) -> Void, failure: @escaping (Error) -> Void) {
-        let realm = try! Realm()
+        let realm = RealmWorker.default.realm!
         MovieServices.getTopRated(page: page, completion: { (movies: [Movie]) in
             for movie in movies {
                 movie.topRated = true
@@ -46,7 +46,7 @@ class MovieRepository {
     }
     
     static func getUpcoming(page: Int, completion: @escaping (Results<Movie>) -> Void, failure: @escaping (Error) -> Void) {
-        let realm = try! Realm()
+        let realm = RealmWorker.default.realm!
         MovieServices.getUpcoming(page: page, completion: { (movies: [Movie]) in
             for movie in movies {
                 movie.upcoming = true

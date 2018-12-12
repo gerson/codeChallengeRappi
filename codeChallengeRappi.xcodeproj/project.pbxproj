@@ -44,6 +44,7 @@
 		D4C1E99121C02648008FB5F9 /* SerieResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C1E99021C02648008FB5F9 /* SerieResponse.swift */; };
 		D4C1E99421C05B4C008FB5F9 /* Connectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C1E99321C05B4C008FB5F9 /* Connectivity.swift */; };
 		D4C1E99621C05BA2008FB5F9 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C1E99521C05BA2008FB5F9 /* BaseViewController.swift */; };
+		D4C1E99B21C08BDA008FB5F9 /* RealmWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C1E99A21C08BDA008FB5F9 /* RealmWorker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +103,7 @@
 		D4C1E99021C02648008FB5F9 /* SerieResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerieResponse.swift; sourceTree = "<group>"; };
 		D4C1E99321C05B4C008FB5F9 /* Connectivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connectivity.swift; sourceTree = "<group>"; };
 		D4C1E99521C05BA2008FB5F9 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		D4C1E99A21C08BDA008FB5F9 /* RealmWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmWorker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,6 +199,7 @@
 				D4C1E94E21BDEB90008FB5F9 /* DateExtension.swift */,
 				D4C1E96E21BE0ECE008FB5F9 /* ResultsExtension.swift */,
 				D4C1E99321C05B4C008FB5F9 /* Connectivity.swift */,
+				D4C1E99A21C08BDA008FB5F9 /* RealmWorker.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -503,6 +506,7 @@
 				D4C1E96B21BDFC98008FB5F9 /* MoviesModels.swift in Sources */,
 				D4C1E94D21BDE35B008FB5F9 /* MovieResponse.swift in Sources */,
 				D4C1E97921BFFCEA008FB5F9 /* PosterCollectionViewCell.swift in Sources */,
+				D4C1E99B21C08BDA008FB5F9 /* RealmWorker.swift in Sources */,
 				D4C1E98521C01EAA008FB5F9 /* SeriesModels.swift in Sources */,
 				D4C1E94921BDAECC008FB5F9 /* APIRouter.swift in Sources */,
 				D4C1E98321C01EAA008FB5F9 /* SeriesWorker.swift in Sources */,

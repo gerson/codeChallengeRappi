@@ -12,7 +12,7 @@ import RealmSwift
 class SerieRepository {
     
     static func getPopular(page: Int, completion: @escaping (Results<Serie>) -> Void, failure: @escaping (Error) -> Void) {
-        let realm = try! Realm()
+        let realm = RealmWorker.default.realm!
         SerieServices.getPopular(page: page, completion: { (seriess: [Serie]) in
             for serie in seriess {
                 serie.popular = true
@@ -29,7 +29,7 @@ class SerieRepository {
     }
     
     static func getTopRated(page: Int, completion: @escaping (Results<Serie>) -> Void, failure: @escaping (Error) -> Void) {
-        let realm = try! Realm()
+        let realm = RealmWorker.default.realm!
         SerieServices.getTopRated(page: page, completion: { (seriess: [Serie]) in
             for serie in seriess {
                 serie.topRated = true
@@ -46,7 +46,7 @@ class SerieRepository {
     }
     
     static func getUpcoming(page: Int, completion: @escaping (Results<Serie>) -> Void, failure: @escaping (Error) -> Void) {
-        let realm = try! Realm()
+        let realm = RealmWorker.default.realm!
         SerieServices.getUpcoming(page: page, completion: { (seriess: [Serie]) in
             for serie in seriess {
                 serie.upcoming = true
