@@ -48,7 +48,7 @@ class BaseViewController: UIViewController {
         }
     }
     
-    private func noInternetConnection() {
+    func noInternetConnection() {
         let view: MessageView = try! SwiftMessages.viewFromNib()
         view.accessibilityPrefix = title
         view.configureContent(title: "No internet", body: "Check your internet connection.")

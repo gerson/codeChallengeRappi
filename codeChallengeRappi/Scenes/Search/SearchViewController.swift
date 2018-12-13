@@ -74,11 +74,13 @@ class SearchViewController: BaseViewController, SearchDisplayLogic {
   
   // MARK: Do something
   
-  //@IBOutlet weak var nameTextField: UITextField!
-  
   func searchCall(text: String) {
     let request = Search.Request(text: text, page: 1)
-    interactor?.search(request: request)
+    if !Connectivity.isConnectedToInternet() {
+        noInternetConnection()
+    } else {
+        interactor?.search(request: request)
+    }
   }
   
   func displayItems(viewModel: Search.ViewModel) {
