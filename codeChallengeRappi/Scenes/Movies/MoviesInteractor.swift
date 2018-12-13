@@ -23,12 +23,11 @@ protocol MoviesDataStore {
 
 class MoviesInteractor: MoviesBusinessLogic, MoviesDataStore {
   var presenter: MoviesPresentationLogic?
-  var worker: MoviesWorker?
+  var worker: MoviesWorkerProtocol = MoviesWorker()
   
   func fetchMovies(request: Movies.Request) {
     var response = Movies.Response(movies: [])
-    worker = MoviesWorker()
-    worker?.fetchByCategoy(category: request.category, page: request.page, completion: {[weak self] (results: [Movie]) in
+    worker.fetchByCategoy(category: request.category, page: request.page, completion: {[weak self] (results: [Movie]) in
         response.movies = results
         self?.presenter?.presentMovies(response: response)
     }, failure: { (err: Error) in
